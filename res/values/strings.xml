@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidFriends</string>
+    <string name="buttonMap">Map</string>
+    <string name="buttonFlag">Flags</string>
+</resources>
