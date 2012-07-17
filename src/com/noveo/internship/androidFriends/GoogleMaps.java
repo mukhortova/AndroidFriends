@@ -16,6 +16,8 @@ import com.google.android.maps.*;
 import java.util.List;
 
 public class GoogleMaps extends MapActivity implements LocationListener {
+    public static final int XCOORDINATE = 54870000;
+    public static final int YCOORDINATE = 83078900;
 
     HelloItemizedOverlay itemizedOverlay;
     List<Overlay> mapOverlays;
@@ -41,16 +43,20 @@ public class GoogleMaps extends MapActivity implements LocationListener {
 		Criteria criteria = new Criteria();
 		String provider = locationManager.getBestProvider(criteria, false);
         locationManager.requestLocationUpdates(provider, 1000, 0, this);
-        Location location = locationManager.getLastKnownLocation(provider);
 
-        GeoPoint point = new GeoPoint(54870000,83078900);
-        OverlayItem overlayitem = new OverlayItem(point, "Hello!", "I'm in Akadem!");
+        GeoPoint point = new GeoPoint(XCOORDINATE,YCOORDINATE);
+        OverlayItem overlayitem = new OverlayItem(point, getString(R.string.helloTitle), getString(R.string.helloBody));
+
 
         itemizedOverlay.addOverlay(overlayitem);
         mapOverlays.add(itemizedOverlay);
 
         Button buttonFlag = (Button) findViewById(R.id.buttonFlagsOnGoogleMap);
-        Log.d("buttonFlag",String.valueOf(buttonFlag==null));
+        if (buttonFlag == null) {
+            Log.d("buttonFlag","is NULL");
+            return;
+        }
+
         buttonFlag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,26 +68,22 @@ public class GoogleMaps extends MapActivity implements LocationListener {
 
     public void onLocationChanged(Location location) {
 
-        System.out.println("loc " + location);
         int lat = (int) (location.getLatitude()*1E6);
 		int lng = (int) (location.getLongitude()*1E6);
 
         GeoPoint point = new GeoPoint(lat,lng);
-        OverlayItem overlayitem = new OverlayItem(point, "Hello!", "I'm in Akadem!");
+        OverlayItem overlayitem = new OverlayItem(point, getString(R.string.helloTitle), getString(R.string.helloBody));
 
         itemizedOverlay.addOverlay(overlayitem);
         mapOverlays.add(itemizedOverlay);
     }
 
     public void onStatusChanged(String s, int i, Bundle bundle) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void onProviderEnabled(String s) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void onProviderDisabled(String s) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

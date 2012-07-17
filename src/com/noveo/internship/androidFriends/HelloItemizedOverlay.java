@@ -8,7 +8,6 @@ import com.google.android.maps.OverlayItem;
 
 import java.util.ArrayList;
 
-
 public class HelloItemizedOverlay extends ItemizedOverlay {
 
     private ArrayList<OverlayItem> mOverlays = new ArrayList<OverlayItem>();
