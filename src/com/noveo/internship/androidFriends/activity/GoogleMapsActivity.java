@@ -1,19 +1,15 @@
 package com.noveo.internship.androidFriends.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import com.google.android.maps.*;
-import com.noveo.internship.androidFriends.model.MapsItemizedOverlay;
 import com.noveo.internship.androidFriends.R;
+import com.noveo.internship.androidFriends.model.MapsItemizedOverlay;
 
 import java.util.List;
 
@@ -50,16 +46,6 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
 
         itemizedOverlay.addOverlay(overlayitem);
         mapOverlays.add(itemizedOverlay);
-
-        Button buttonFlag = (Button) findViewById(R.id.buttonFlagsOnGoogleMap);
-        Log.d("buttonFlag",String.valueOf(buttonFlag==null));
-        buttonFlag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GoogleMapsActivity.this, FlagsSettingActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void onLocationChanged(Location location) {
