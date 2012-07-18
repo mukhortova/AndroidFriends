@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidFriends</string>
-    <string name="buttonMap">Map</string>
-    <string name="buttonFlag">Flags</string>
+    <string name="map_on_tab">Map</string>
+    <string name="flags_on_tab">Flags</string>
     <string name="helloTitle">Hello!</string>
     <string name="helloBody">I\'m in Akadem!</string>
+    <string name="api_key">AIzaSyB62_OO2COeP9d-ykdGthxKH0PSxQQOE9o</string>
 </resources>

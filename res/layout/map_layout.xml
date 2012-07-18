@@ -3,24 +3,7 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical">
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <Button
-                android:id="@+id/buttonMapOnGoogleMap"
-                android:text="@string/buttonMap"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                />
-        <Button
-                android:id="@+id/buttonFlagsOnGoogleMap"
-                android:text="@string/buttonFlag"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"/>
-    </LinearLayout>
+
 <com.google.android.maps.MapView
 android:id="@+id/mapview"
         android:layout_width="fill_parent"
