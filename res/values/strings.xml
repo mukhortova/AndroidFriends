@@ -3,6 +3,4 @@
     <string name="app_name">AndroidFriends</string>
     <string name="buttonMap">Map</string>
     <string name="buttonFlag">Flags</string>
-    <string name="helloTitle">Hello!</string>
-    <string name="helloBody">I\'m in Akadem!</string>
 </resources>
