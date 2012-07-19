@@ -18,17 +18,17 @@ public class TabsActivity extends TabActivity {
         TabHost.TabSpec tabSpec;
 
         tabSpec = tabHost.newTabSpec(getString(R.string.map_on_tab));
-        tabSpec.setIndicator("MAP");
+        tabSpec.setIndicator("",getResources().getDrawable(R.drawable.map_icon_selector));
         tabSpec.setContent(new Intent(this, GoogleMapsActivity.class));
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec(getString(R.string.map_on_tab));
-        tabSpec.setIndicator("FLAGS");
+        tabSpec.setIndicator("",getResources().getDrawable(R.drawable.flags_icon_selector));
         tabSpec.setContent(new Intent(this, FlagsSettingActivity.class));
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec(getString(R.string.map_on_tab));
-        tabSpec.setIndicator("FRIENDS");
+        tabSpec.setIndicator("",getResources().getDrawable(R.drawable.friends_icon_selector));
         tabSpec.setContent(new Intent(this, FriendsAndMeetingsActivity.class));
         tabHost.addTab(tabSpec);
     }
