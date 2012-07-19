@@ -32,6 +32,9 @@
         <activity android:name=".activity.FriendsAndMeetingsActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.LoginActivity"
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar"/>
 
     </application>
 </manifest> 
