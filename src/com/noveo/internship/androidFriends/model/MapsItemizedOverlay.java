@@ -3,7 +3,6 @@ package com.noveo.internship.androidFriends.model;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
 import java.util.ArrayList;
@@ -27,6 +26,15 @@ public class MapsItemizedOverlay extends com.google.android.maps.ItemizedOverlay
     public void addOverlay(OverlayItem overlay) {
         mOverlays.add(overlay);
         populate();
+    }
+
+    public void replaceOverlayItem(OverlayItem overlay) {
+        if (mOverlays.size() == 0) {
+            mOverlays.add(overlay);
+        } else {
+            mOverlays.set(mOverlays.size() - 1, overlay);
+            populate();
+        }
     }
 
     @Override

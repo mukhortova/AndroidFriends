@@ -1,27 +1,26 @@
 package com.noveo.internship.androidFriends.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
+import android.widget.Toast;
 import com.google.android.maps.*;
-import com.noveo.internship.androidFriends.model.MapsItemizedOverlay;
 import com.noveo.internship.androidFriends.R;
+import com.noveo.internship.androidFriends.model.MapsItemizedOverlay;
 
 import java.util.List;
 
 public class GoogleMapsActivity extends MapActivity implements LocationListener {
+    public static final int DEFAULT_LATITUDE = 54870000;
+    public static final int DEFAULT_LONGITUDE = 83078900;
 
     MapsItemizedOverlay itemizedOverlay;
     List<Overlay> mapOverlays;
+
     @Override
     protected boolean isRouteDisplayed() {
         return false;
@@ -38,47 +37,42 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
         mapOverlays = mapView.getOverlays();
         Drawable drawable = this.getResources().getDrawable(R.drawable.androidmarker);
         itemizedOverlay = new MapsItemizedOverlay(drawable, this);
+        GeoPoint defaultUserPosition = new GeoPoint(DEFAULT_LATITUDE,DEFAULT_LONGITUDE);
+        OverlayItem userOverlayItem = new OverlayItem(defaultUserPosition, getString(R.string.hello_title), getString(R.string.hello_body));
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 		Criteria criteria = new Criteria();
 		String provider = locationManager.getBestProvider(criteria, false);
         locationManager.requestLocationUpdates(provider, 1000, 0, this);
-        Location location = locationManager.getLastKnownLocation(provider);
 
-        GeoPoint point = new GeoPoint(54870000,83078900);
-        OverlayItem overlayitem = new OverlayItem(point, "Hello!", "I'm in Akadem!");
-
-        itemizedOverlay.addOverlay(overlayitem);
+        itemizedOverlay.addOverlay(userOverlayItem);
         mapOverlays.add(itemizedOverlay);
 
-        Button buttonFlag = (Button) findViewById(R.id.buttonFlagsOnGoogleMap);
-        Log.d("buttonFlag",String.valueOf(buttonFlag==null));
-        buttonFlag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GoogleMapsActivity.this, FlagsSettingActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
+//        added for fan
+//        Location location = locationManager.getLastKnownLocation(provider);
+//        Toast.makeText(this, "new location", 10);
+//        onLocationChanged(location);
     }
 
     public void onLocationChanged(Location location) {
 
-        System.out.println("loc " + location);
+
         int lat = (int) (location.getLatitude()*1E6);
 		int lng = (int) (location.getLongitude()*1E6);
 
         GeoPoint point = new GeoPoint(lat,lng);
-        OverlayItem overlayitem = new OverlayItem(point, "Hello!", "I'm in Akadem!");
+        OverlayItem userOverlayItem = new OverlayItem(point, getString(R.string.hello_title), getString(R.string.hello_body));
 
-        itemizedOverlay.addOverlay(overlayitem);
-        mapOverlays.add(itemizedOverlay);
+        itemizedOverlay.replaceOverlayItem(userOverlayItem);
+        replaceOverlay(itemizedOverlay);
+    }
+    public void replaceOverlay(MapsItemizedOverlay overlay) {
+        if (mapOverlays.size() == 0) {
+            mapOverlays.add(overlay);
+        } else {
+            mapOverlays.set(mapOverlays.size() - 1, overlay);
+        }
     }
 
     public void onStatusChanged(String s, int i, Bundle bundle) {

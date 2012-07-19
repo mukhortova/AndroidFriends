@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-        xmlns:android="http://schemas.android.com/apk/res/android">
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
             android:id="@+id/menu_add"
-            android:title="add">
+            android:title="do smth">
     </item>
+
     <item
             android:id="@+id/menu_delete"
             android:orderInCategory="3"
-            android:title="delete">
+            android:title="do smth else">
     </item>
 </menu>

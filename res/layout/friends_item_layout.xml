@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/icon"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_launcher" />
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/icon"
+            android:textSize="20dip"
+            android:text="Title" />
+
+    <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/icon"
+            android:textSize="20dip"
+            android:text="Subtitle" />
+    <ImageView
+            android:id="@+id/call"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/phone" />
+    <ImageView
+            android:id="@+id/send"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_toLeftOf="@+id/call"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/gmail" />
+
+</RelativeLayout>
