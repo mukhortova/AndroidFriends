@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.Toast;
 import com.google.android.maps.*;
 import com.noveo.internship.androidFriends.R;
 import com.noveo.internship.androidFriends.model.MapsItemizedOverlay;
@@ -37,7 +38,7 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
         Drawable drawable = this.getResources().getDrawable(R.drawable.androidmarker);
         itemizedOverlay = new MapsItemizedOverlay(drawable, this);
         GeoPoint defaultUserPosition = new GeoPoint(DEFAULT_LATITUDE,DEFAULT_LONGITUDE);
-        OverlayItem userOverlayItem = new OverlayItem(defaultUserPosition, getString(R.string.helloTitle), getString(R.string.helloBody));
+        OverlayItem userOverlayItem = new OverlayItem(defaultUserPosition, getString(R.string.hello_title), getString(R.string.hello_body));
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -47,6 +48,11 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
 
         itemizedOverlay.addOverlay(userOverlayItem);
         mapOverlays.add(itemizedOverlay);
+
+//        added for fan
+//        Location location = locationManager.getLastKnownLocation(provider);
+//        Toast.makeText(this, "new location", 10);
+//        onLocationChanged(location);
     }
 
     public void onLocationChanged(Location location) {
@@ -56,7 +62,7 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
 		int lng = (int) (location.getLongitude()*1E6);
 
         GeoPoint point = new GeoPoint(lat,lng);
-        OverlayItem userOverlayItem = new OverlayItem(point, getString(R.string.helloTitle), getString(R.string.helloBody));
+        OverlayItem userOverlayItem = new OverlayItem(point, getString(R.string.hello_title), getString(R.string.hello_body));
 
         itemizedOverlay.replaceOverlayItem(userOverlayItem);
         replaceOverlay(itemizedOverlay);
