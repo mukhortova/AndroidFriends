@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+# Map static resources from the /public folder to the /assets URL path
+# GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+POST /user/register controllers.UserController.register()
+
+POST /user/location controllers.UserController.location()
+
+POST /friends/find  controllers.FriendsController.find()
+
+POST /friends/location controllers.FriendsController.location()
+
+POST /party/create  controllers.PartyController.create()
+
+POST /party/update  controllers.PartyController.update()
+
+POST /party/friends  controllers.PartyController.friends()
+
