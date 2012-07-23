@@ -7,7 +7,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.widget.Toast;
 import com.google.android.maps.*;
 import com.noveo.internship.androidFriends.R;
 import com.noveo.internship.androidFriends.model.MapsItemizedOverlay;
@@ -21,10 +20,7 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
     MapsItemizedOverlay itemizedOverlay;
     List<Overlay> mapOverlays;
 
-    @Override
-    protected boolean isRouteDisplayed() {
-        return false;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +49,11 @@ public class GoogleMapsActivity extends MapActivity implements LocationListener 
 //        Location location = locationManager.getLastKnownLocation(provider);
 //        Toast.makeText(this, "new location", 10);
 //        onLocationChanged(location);
+    }
+
+    @Override
+    protected boolean isRouteDisplayed() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void onLocationChanged(Location location) {
