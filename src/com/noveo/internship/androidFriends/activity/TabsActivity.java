@@ -28,12 +28,6 @@ public class TabsActivity extends FragmentActivity {
 
         mTabManager = new TabManager(this, mTabHost, R.id.realtabcontent);
 
-
-//
-//        mTabManager.addTab(mTabHost.newTabSpec("map").setIndicator("",getResources().getDrawable(R.drawable.map_icon_selector)),
-//                FragmentStackSupport.class, null);
-
-
         mTabManager.addTab(mTabHost.newTabSpec("map").setIndicator("",getResources().getDrawable(R.drawable.map_icon_selector)),
                 MyMapFragment.class, null);
         mTabManager.addTab(mTabHost.newTabSpec("flags").setIndicator("", getResources().getDrawable(R.drawable.flags_icon_selector)),
@@ -100,9 +94,6 @@ public class TabsActivity extends FragmentActivity {
 
             TabInfo info = new TabInfo(tag, clss, args);
 
-            // Check to see if we already have a fragment for this tab, probably
-            // from a previously saved state.  If so, deactivate it, because our
-            // initial state is that a tab isn't shown.
             info.fragment = mActivity.getSupportFragmentManager().findFragmentByTag(tag);
             if (info.fragment != null && !info.fragment.isDetached()) {
                 FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();

@@ -13,7 +13,6 @@ public class FriendsAndMeetingsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Create the list fragment and add it as our sole content.
         if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
             FriendsList list = new FriendsList();
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, list).commit();
